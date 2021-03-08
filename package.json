@@ -1,7 +1,14 @@
 {
   "name": "firn",
   "version": "0.0.1",
+  "description": "An Ionic project",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
     "@capacitor/core": "2.4.7",
     "@ionic/react": "^5.5.0",
@@ -36,17 +43,12 @@
     "workbox-strategies": "^5.1.4",
     "workbox-streams": "^5.1.4"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "devDependencies": {
+    "@capacitor/cli": "2.4.7",
+    "@typescript-eslint/eslint-plugin": "^4.17.0",
+    "@typescript-eslint/parser": "^4.17.0",
+    "eslint": "^7.21.0",
+    "eslint-plugin-react": "^7.22.0"
   },
   "browserslist": {
     "production": [
@@ -59,9 +61,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@capacitor/cli": "2.4.7"
-  },
-  "description": "An Ionic project"
+  }
 }
