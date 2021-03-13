@@ -1,37 +1,52 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { IonButton, IonCol, IonContent, IonGrid, IonHeader, IonInput, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import { signup } from '../firebase';
 
-const Register: React.FC = () => {
-	const [username, setUsername] = useState('');
-	const [password, setPassword] = useState('');
+interface Props {}
 
-	const registerUser = () => {
-		signup(username, password);
+interface State {
+	username: string;
+	password: string;
+}
+
+class Register extends React.Component<Props, State> {
+	state = {
+		username: '',
+		password: ''
+	}
+
+	public setUsername = (username: string) => this.setState({ username });
+
+	public setPassword = (password: string) => this.setState({ password });
+
+	registerUser = () => {
+		signup(this.state.username, this.state.password);
 	};
 
-	return (
-		<IonPage>
-			<IonHeader>
-				<IonToolbar>
-					<IonTitle>App Name</IonTitle>
-				</IonToolbar>
-			</IonHeader>
-			<IonContent>
-				<IonGrid>
-					<IonRow style={{display: 'flex', justifyContent: 'center'}}>
-						<IonCol style={{display: 'flex', flexDirection: 'column', maxWidth: '18rem'}}>
-							<IonButton routerLink="/">Home</IonButton>
-							<IonInput placeholder="username" onIonChange={(e: any) => setUsername(e.target?.value)} />
-							<IonInput placeholder="password" onIonChange={(e: any) => setPassword(e.target?.value)} />
-							<IonButton onClick={registerUser}>Register</IonButton>
-						</IonCol>
-					</IonRow>
-				</IonGrid>
-			</IonContent>
-		</IonPage>
-	);
-};
+	render() {
+		return (
+			<IonPage>
+				<IonHeader>
+					<IonToolbar>
+						<IonTitle>App Name</IonTitle>
+					</IonToolbar>
+				</IonHeader>
+				<IonContent>
+					<IonGrid>
+						<IonRow style={{display: 'flex', justifyContent: 'center'}}>
+							<IonCol style={{display: 'flex', flexDirection: 'column', maxWidth: '18rem'}}>
+								<IonButton routerLink="/">Home</IonButton>
+								<IonInput placeholder="username" onIonChange={(e) => this.setUsername(e.detail.value!)} />
+								<IonInput placeholder="password" onIonChange={(e) => this.setPassword(e.detail.value!)} />
+								<IonButton onClick={this.registerUser}>Register</IonButton>
+							</IonCol>
+						</IonRow>
+					</IonGrid>
+				</IonContent>
+			</IonPage>
+		);
+	}
+}
 
 
 export default Register;

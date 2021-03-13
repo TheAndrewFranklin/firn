@@ -25,7 +25,7 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-class App extends React.Component{
+class App extends React.Component {
 	render() {
 		return (
 			<IonApp>
@@ -40,4 +40,5 @@ class App extends React.Component{
 		);
 	}
 }
+
 export default App;
