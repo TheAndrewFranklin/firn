@@ -1,26 +1,36 @@
 import React from 'react';
-import { IonButton, IonCol, IonContent, IonGrid, IonHeader, IonInput, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
+import {
+	IonButton,
+	IonCol,
+	IonContent,
+	IonGrid,
+	IonHeader,
+	IonInput,
+	IonPage,
+	IonRow,
+	IonTitle,
+	IonToolbar,
+} from '@ionic/react';
 import { signup } from '../firebase';
 
 interface Props {}
 
 interface State {
-	username: string;
+	email: string;
 	password: string;
 }
 
 class Register extends React.Component<Props, State> {
 	state = {
-		username: '',
-		password: ''
-	}
+		email: '',
+		password: '',
+	};
 
-	public setUsername = (username: string) => this.setState({ username });
-
+	public setEmail = (email: string) => this.setState({ email });
 	public setPassword = (password: string) => this.setState({ password });
 
 	registerUser = () => {
-		signup(this.state.username, this.state.password);
+		signup(this.state.email, this.state.password);
 	};
 
 	render() {
@@ -33,11 +43,11 @@ class Register extends React.Component<Props, State> {
 				</IonHeader>
 				<IonContent>
 					<IonGrid>
-						<IonRow style={{display: 'flex', justifyContent: 'center'}}>
-							<IonCol style={{display: 'flex', flexDirection: 'column', maxWidth: '18rem'}}>
-								<IonButton routerLink="/">Home</IonButton>
-								<IonInput placeholder="username" onIonChange={(e) => this.setUsername(e.detail.value!)} />
-								<IonInput placeholder="password" onIonChange={(e) => this.setPassword(e.detail.value!)} />
+						<IonRow style={{ display: 'flex', justifyContent: 'center' }}>
+							<IonCol style={{ display: 'flex', flexDirection: 'column', maxWidth: '18rem' }}>
+								<IonButton routerLink='/login'>Go To Login</IonButton>
+								<IonInput placeholder='email' onIonChange={(e) => this.setEmail(e.detail.value!)} />
+								<IonInput placeholder='password' onIonChange={(e) => this.setPassword(e.detail.value!)} />
 								<IonButton onClick={this.registerUser}>Register</IonButton>
 							</IonCol>
 						</IonRow>
@@ -47,6 +57,5 @@ class Register extends React.Component<Props, State> {
 		);
 	}
 }
-
 
 export default Register;

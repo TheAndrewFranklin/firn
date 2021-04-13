@@ -5,6 +5,7 @@ import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import { auth } from './firebase';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -27,13 +28,19 @@ import './theme/variables.css';
 
 class App extends React.Component {
 	render() {
+		console.log(auth.currentUser);
 		return (
 			<IonApp>
 				<IonReactRouter>
 					<IonRouterOutlet>
-						<Route path="/" component={Home} exact />
-						<Route path="/login" component={Login} />
-						<Route path="/register" component={Register} />
+						{auth.currentUser ? (
+							<Route path='/home' component={Home} exact />
+						) : (
+							<>
+								<Route path='/login' component={Login} />
+								<Route path='/register' component={Register} />
+							</>
+						)}
 					</IonRouterOutlet>
 				</IonReactRouter>
 			</IonApp>
