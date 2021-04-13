@@ -41,3 +41,13 @@ export async function signup(email: string, password: string) {
 		return false;
 	}
 }
+
+export async function getLoginStatus() {
+	return await auth.onAuthStateChanged((user) => {
+		if (user) {
+			return user;
+		}
+
+		return null;
+	});
+}

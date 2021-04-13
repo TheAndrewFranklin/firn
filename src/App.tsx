@@ -1,11 +1,12 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
+import Message from './pages/Message';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import { auth } from './firebase';
+import { getLoginStatus } from './firebase';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -28,20 +29,22 @@ import './theme/variables.css';
 
 class App extends React.Component {
 	render() {
-		console.log(auth.currentUser);
 		return (
 			<IonApp>
 				<IonReactRouter>
-					<IonRouterOutlet>
-						{auth.currentUser ? (
-							<Route path='/home' component={Home} exact />
-						) : (
-							<>
-								<Route path='/login' component={Login} />
-								<Route path='/register' component={Register} />
-							</>
-						)}
-					</IonRouterOutlet>
+					{getLoginStatus() ? (
+						<IonRouterOutlet>
+							<Route path='/home' component={Home} />
+							<Route path='/message' component={Message} />
+							<Redirect exact path='/' to='/home' />
+						</IonRouterOutlet>
+					) : (
+						<IonRouterOutlet>
+							<Route path='/login' component={Login} />
+							<Route path='/register' component={Register} />
+							<Redirect exact path='/' to='/login' />
+						</IonRouterOutlet>
+					)}
 				</IonReactRouter>
 			</IonApp>
 		);

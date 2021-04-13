@@ -1,13 +1,27 @@
+import {
+	IonPage,
+	IonHeader,
+	IonToolbar,
+	IonTitle,
+	IonContent,
+	IonGrid,
+	IonRow,
+	IonCol,
+	IonText,
+	IonButtons,
+	IonBackButton,
+} from '@ionic/react';
 import React from 'react';
-import { IonButton, IonCol, IonContent, IonGrid, IonHeader, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
-import { toast } from '../shared/toast';
 
-class Home extends React.Component {
+class Message extends React.Component {
 	render() {
 		return (
 			<IonPage>
 				<IonHeader>
 					<IonToolbar>
+						<IonButtons slot='start'>
+							<IonBackButton />
+						</IonButtons>
 						<IonTitle>Boatr</IonTitle>
 					</IonToolbar>
 				</IonHeader>
@@ -15,8 +29,7 @@ class Home extends React.Component {
 					<IonGrid>
 						<IonRow style={{ display: 'flex', justifyContent: 'center' }}>
 							<IonCol style={{ display: 'flex', flexDirection: 'column', maxWidth: '18rem' }}>
-								<IonButton onClick={() => toast('Test')}>Test Toast</IonButton>
-								<IonButton routerLink='/message'>Go To Message</IonButton>
+								<IonText>This is a dummy message</IonText>
 							</IonCol>
 						</IonRow>
 					</IonGrid>
@@ -26,4 +39,4 @@ class Home extends React.Component {
 	}
 }
 
-export default Home;
+export default Message;
