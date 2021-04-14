@@ -6,7 +6,7 @@ import Home from './pages/Home';
 import Message from './pages/Message';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import { getLoginStatus } from './firebase';
+import { getUser } from './firebase';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -32,7 +32,7 @@ class App extends React.Component {
 		return (
 			<IonApp>
 				<IonReactRouter>
-					{getLoginStatus() ? (
+					{getUser() ? (
 						<IonRouterOutlet>
 							<Route path='/home' component={Home} />
 							<Route path='/message' component={Message} />

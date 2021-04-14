@@ -20,15 +20,15 @@ class Message extends React.Component {
 				<IonHeader>
 					<IonToolbar>
 						<IonButtons slot='start'>
-							<IonBackButton />
+							<IonBackButton defaultHref='/home' />
 						</IonButtons>
 						<IonTitle>Boatr</IonTitle>
 					</IonToolbar>
 				</IonHeader>
 				<IonContent>
 					<IonGrid>
-						<IonRow style={{ display: 'flex', justifyContent: 'center' }}>
-							<IonCol style={{ display: 'flex', flexDirection: 'column', maxWidth: '18rem' }}>
+						<IonRow>
+							<IonCol>
 								<IonText>This is a dummy message</IonText>
 							</IonCol>
 						</IonRow>

@@ -42,7 +42,7 @@ export async function signup(email: string, password: string) {
 	}
 }
 
-export async function getLoginStatus() {
+export async function getUser() {
 	return await auth.onAuthStateChanged((user) => {
 		if (user) {
 			return user;
