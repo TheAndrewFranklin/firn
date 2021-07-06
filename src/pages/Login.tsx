@@ -45,7 +45,7 @@ class Login extends React.Component<Props, State> {
 			<IonPage>
 				<IonHeader>
 					<IonToolbar>
-						<IonTitle>App Name</IonTitle>
+						<IonTitle>Firn</IonTitle>
 					</IonToolbar>
 				</IonHeader>
 				<IonContent>

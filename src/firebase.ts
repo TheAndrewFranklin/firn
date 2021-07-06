@@ -42,12 +42,13 @@ export async function signup(email: string, password: string) {
 	}
 }
 
-export async function getUser() {
-	return await auth.onAuthStateChanged((user) => {
-		if (user) {
-			return user;
-		}
-
-		return null;
-	});
+export async function logout() {
+	try {
+		auth.signOut();
+		return true;
+	} catch (error) {
+		toast(error);
+		console.log(error);
+		return false;
+	}
 }

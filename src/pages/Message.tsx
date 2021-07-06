@@ -22,7 +22,7 @@ class Message extends React.Component {
 						<IonButtons slot='start'>
 							<IonBackButton defaultHref='/home' />
 						</IonButtons>
-						<IonTitle>Boatr</IonTitle>
+						<IonTitle>Firn</IonTitle>
 					</IonToolbar>
 				</IonHeader>
 				<IonContent>
